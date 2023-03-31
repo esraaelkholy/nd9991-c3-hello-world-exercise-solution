@@ -34,6 +34,7 @@ jobs:
             name: Install dependencies
             command: |
               # install the dependencies needed for your playbook
+              apk add openssh-client
               apk add --update ansible 
         - run:
             name: Configure server
