@@ -43,6 +43,12 @@ jobs:
         - run:
             name: Configure server
             command: |
+              ssh -o UserKnownHostsFile=/dev/null \
+                  -o StrictHostKeyChecking=no \
+                  -o LogLevel=error \
+                  -i identity_file \
+                  machine.example.org \
+                  gcc -dumpversion
               ansible-playbook -i inventory main4.yml
 
 # Sequential workflow
