@@ -25,7 +25,7 @@ jobs:
     # Exercise: Config and Deployment
     configure_infrastructure: 
       docker:
-        - image: python:3.7-alpine3.11
+        - image: python:3.7-alpine3.12
       steps:
         - checkout
         - add_ssh_keys:
@@ -35,7 +35,11 @@ jobs:
             command: |
               # install the dependencies needed for your playbook
               apk add openssh-client
-              apk add --update ansible 
+              apk add --update ansible
+         - run:
+            name: configure /ansible.cfg
+            command: |
+              sed -i "s/#  strictHostKeyChecking ask/  StrictHostkeyChecking no/g" /etc/ssh/ss_config
         - run:
             name: Configure server
             command: |
