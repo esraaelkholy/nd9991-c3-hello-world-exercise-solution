@@ -47,7 +47,6 @@ jobs:
                   -o StrictHostKeyChecking=no \
                   -o LogLevel=error \
                   -i identity_file \
-                  machine.example.org \
                   gcc -dumpversion
               ansible-playbook -i inventory main4.yml
 
