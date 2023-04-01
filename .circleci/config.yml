@@ -23,33 +23,32 @@ jobs:
         # - run: return 1
        # - destroy_environment
     # Exercise: Config and Deployment
-    configure_infrastructure: 
-      docker:
-        - image: python:3.7-alpine3.11
-      steps:
-        - checkout
-        - add_ssh_keys:
-            fingerprints: ["06:8a:19:09:dc:84:78:6d:8b:06:c7:77:ab:cf:70:d9"] # You can get this ID in the section where you registered the SSH Key
-        - run:
-            name: Install dependencies
-            command: |
+#    configure_infrastructure: 
+#      docker:
+#        - image: python:3.7-alpine3.11
+#      steps:
+#        - checkout
+#        - add_ssh_keys:
+#            fingerprints: ["06:8a:19:09:dc:84:78:6d:8b:06:c7:77:ab:cf:70:d9"] # You can get this ID in the section where you registered the SSH Key
+#        - run:
+#            name: Install dependencies
+#            command: |
               # install the dependencies needed for your playbook
-              apk add gzip openssh-client
-              apk add --update ansible
+#              apk add gzip openssh-client
+#              apk add --update ansible
 #        - run:
 #            name: configure /ansible.cfg
 #            command: |
 #              sed -i "s/#  strictHostKeyChecking ask/  StrictHostkeyChecking no/g" /etc/ssh/ss_config
-        - run:
-            name: Reading Inventory file
-            command: |
-              cat inventory
+#        - run:
+#            name: Reading Inventory file
+#            command: |
+#              cat inventory
  
-        - run:
-            name: Configure server
-            command: |
-              aws cli ec2 describe-instances --region us-east-1 --query 'Reservations[*].Instances[*].PublicIpAddress' --output text >> inventory 
-              ansible-playbook -i inventory main4.yml
+#        - run:
+#            name: Configure server
+#            command: | 
+#              ansible-playbook -i inventory main4.yml
 
     # Exercise: Smoke Testing
     smoke_test:
