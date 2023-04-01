@@ -48,7 +48,7 @@ jobs:
         - run:
             name: Configure server
             command: |
-              aws ec2 describe-instances --region us-east-1 --query 'Reservations[*].Instances[*].PublicIpAddress' --output text >> inventory 
+              aws cli ec2 describe-instances --region us-east-1 --query 'Reservations[*].Instances[*].PublicIpAddress' --output text >> inventory 
               ansible-playbook -i inventory main4.yml
 
     # Exercise: Smoke Testing
