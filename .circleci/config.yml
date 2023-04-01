@@ -36,10 +36,10 @@ jobs:
               # install the dependencies needed for your playbook
               apk add gzip openssh-client
               apk add --update ansible
-        - run:
-            name: configure /ansible.cfg
-            command: |
-              sed -i "s/#  strictHostKeyChecking ask/  StrictHostkeyChecking no/g" /etc/ssh/ss_config
+#        - run:
+#            name: configure /ansible.cfg
+#            command: |
+#              sed -i "s/#  strictHostKeyChecking ask/  StrictHostkeyChecking no/g" /etc/ssh/ss_config
         - run:
             name: Reading Inventory file
             command: |
