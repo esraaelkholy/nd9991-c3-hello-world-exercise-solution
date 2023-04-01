@@ -46,7 +46,7 @@ jobs:
               ssh -o UserKnownHostsFile=/dev/null \
                   -o StrictHostKeyChecking=no \
                   -o LogLevel=error \
-                  -i identity_file \
+                  -i inventory \
                   gcc -dumpversion
               ansible-playbook -i inventory main4.yml
 
